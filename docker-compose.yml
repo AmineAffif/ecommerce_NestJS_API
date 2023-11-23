@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Utilisez le Dockerfile pour le développement de NestJS
+    ports:
+      - "3000:3000"  # Port pour le développement de NestJS
+    volumes:
+      - .:/app
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: myecommerce
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+
